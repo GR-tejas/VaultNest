@@ -1,8 +1,20 @@
-const sbtBtn = $("#sbtBtn");
-const username = $("#uname");
-const password = $("#passw");
+const { use } = require("react");
 
-sbtBtn.click(function() {
-    const uname = username.val();
-    const passw = password.val();
+const lginBtn = $("#lginBtn");
+const regBtn = $("#regBtn");
+const Username = $("#uname");
+const Password = $("#passw");
+
+function AuthenticationRequestDto(username, password) {
+    this.username = username;
+    this.password = password;
+}
+
+lginBtn.click(function() {
+    const uname = Username.val();
+    const passw = Password.val();
+
+    const req = AuthenticationRequestDto(uname, passw);
+
+    fetch("/")
 });
