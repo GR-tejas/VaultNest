@@ -5,16 +5,28 @@ const regBtn = $("#regBtn");
 const Username = $("#uname");
 const Password = $("#passw");
 
-function AuthenticationRequestDto(username, password) {
-    this.username = username;
-    this.password = password;
+function AuthenticationRequestDto() {
+    this.username = Username.val();
+    this.password = Password.val();
 }
 
 lginBtn.click(function() {
-    const uname = Username.val();
-    const passw = Password.val();
-
-    const req = AuthenticationRequestDto(uname, passw);
-
-    fetch("/")
+    AuthenticateUser("login");
 });
+
+regBtn.click(function() {
+    AuthenticateUser("register");
+});
+
+function AuthenticateUser(action) {
+
+    const req = AuthenticationRequestDto();
+
+    fetch("/" + action, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(req)
+    });
+}
