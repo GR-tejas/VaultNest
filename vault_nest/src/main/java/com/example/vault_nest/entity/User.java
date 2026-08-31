@@ -17,6 +17,15 @@ public class User {
 
     private String password;
 
+    public User() {
+        
+    }
+
+    public User(String _username, String _password) {
+        this.username = _username;
+        this.password = _password;
+    }
+
     public Long getId() {
         return id;
     }

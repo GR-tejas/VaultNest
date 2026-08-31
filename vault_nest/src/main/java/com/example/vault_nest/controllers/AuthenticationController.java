@@ -3,6 +3,7 @@ package com.example.vault_nest.controllers;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.vault_nest.dto.Authentication.AuthenticationRequestDto;
+import com.example.vault_nest.dto.Authentication.authenticationResponse;
 import com.example.vault_nest.service.authenticationService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,13 +20,13 @@ public class AuthenticationController {
         authenticationService = _authenticationService;
     }
 
-    @GetMapping("/login")
-    public String userLogin(@RequestBody AuthenticationRequestDto user) {
-        return authenticationService.userLogin(user);
+    @PostMapping("/login")
+    public authenticationResponse userLogin(@RequestBody AuthenticationRequestDto req) {
+        return authenticationService.userLogin(req);
     }
 
     @PostMapping("/register")
-    public String userRegister(@RequestBody AuthenticationRequestDto user) {
-        return authenticationService.userRegister(user);
+    public authenticationResponse userRegister(@RequestBody AuthenticationRequestDto req) {
+        return authenticationService.userRegister(req);
     }
 }
