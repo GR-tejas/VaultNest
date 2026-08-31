@@ -39,10 +39,23 @@ function AuthenticateUser(action) {
         let message = document.createElement("p");
         message.textContent = data.message;
         message.style.color = (data.isError ?  "red" : "blue");
-        if(action === "register") {
-            
-        } 
+        switch(action) {
+            case "register": {
+                onRegister();
+            }
+            case "login": {
+                onLogin();
+            }
+        }
         msgDiv.empty();
         msgDiv.append(message);
     });
+}
+
+let onRegister = function() {
+    
+}
+
+let onLogin = function() {
+
 }
